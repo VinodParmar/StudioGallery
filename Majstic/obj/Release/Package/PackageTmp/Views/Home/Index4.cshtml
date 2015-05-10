@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "Majestic Photo Studio";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+
+
+
+<div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="~/Content/MJB/1.png">
+                <div class="carousel-caption">
+                    <h3>
+                        For your Moments
+                    </h3>
+                    <p>
+                        Great Moments , Great Pictures , Create Memories
+                    </p>
+                </div>
+            </div>
+            <!-- End Item -->
+            <div class="item">
+                <img src="~/Content/MJB/2.png">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p>
+
+                    </p>
+                </div>
+            </div>
+            <!-- End Item -->
+            <div class="item">
+                <img src="~/Content/MJB/3.png">
+                <div class="carousel-caption">
+                    <h3>
+                        As they Grow
+                    </h3>
+                    <p>
+                        Great Moments , Greate Pictures , Greate Momoreis
+
+                    </p>
+                </div>
+            </div>
+            <!-- End Item -->
+            <div class="item">
+                <img src="~/Content/MJB/4.png">
+                <div class="carousel-caption">
+                    <h3>
+                        For your Achievements
+                    </h3>
+                    <p>
+
+                    </p>
+                </div>
+            </div>
+            <!-- End Item -->
+        </div>
+        <!-- End Carousel Inner -->
+        <ul class="nav nav-pills nav-justified">
+            <li data-target="#myCarousel" data-slide-to="0" class="active">
+                <a href="#">
+                    Moments<small>
+
+                    </small>
+                </a>
+            </li>
+            <li data-target="#myCarousel" data-slide-to="1">
+                <a href="#">
+                    Projects<small>
+
+                    </small>
+                </a>
+            </li>
+            <li data-target="#myCarousel" data-slide-to="2">
+                <a href="#">
+                    Grow<small>
+
+                    </small>
+                </a>
+            </li>
+            <li data-target="#myCarousel" data-slide-to="3">
+                <a href="#">
+                    Achieve<small>
+
+                    </small>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End Carousel -->
+</div>
+
+<div class="PartialContent " data-url="@Url.Action("HomeTimeLineImgs", "Home")">
+    <img src="~/Content/SdnHotelsLoader.GIF" class="col-centered" />
+</div>
+
+
+<h2 class="headline3 marginleft15px">Thank you for your trust</h2>
+
+<div class="row   marginTop5px">
+
+    <div class="col-md-6">
+        <div class="PartialContent" data-url="@Url.Action("TotalNo", "Home")">
+            <img src="~/Content/SdnHotelsLoader.GIF" />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="PartialContent" data-url="@Url.Action("social", "Home")">
+            <img src="~/Content/SdnHotelsLoader.GIF" class="col-centered" />
+        </div>
+    </div>
+    <hr />
+</div>
+
+<div class="marginTop10px grd"></div>
+
+
+<div class="PartialContent" data-url="@Url.Action("Offers", "Home")">
+    <img src="~/Content/SdnHotelsLoader.GIF" class="col-centered" />
+</div>
+
+<div class="PartialContent" data-url="@Url.Action("ContactUS", "Home")">
+    <img src="~/Content/SdnHotelsLoader.GIF" class="col-centered" />
+</div>

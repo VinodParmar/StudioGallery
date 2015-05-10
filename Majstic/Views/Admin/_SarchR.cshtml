@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Majstic.Models.EditUserViewModel>
+
+<div class="thumbnail marginTop10px" id="ChangeDiv">
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(@item.UserName, "UserDetails", new { username = item.UserName })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td></td>
+                <td>
+                    @Html.ActionLink("Manage Albums", "ManageAlbums", new { XuName = item.UserName })
+
+                </td>
+                <td>
+                    @Html.ActionLink("New Allbum", "NewAllbum", new { XuName = item.UserName })
+            </tr>
+        }
+
+    </table>
+</div>

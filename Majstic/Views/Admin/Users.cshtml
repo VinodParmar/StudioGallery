@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Majstic.Models.EditUserViewModel>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<div class="thumbnail row col-centered">
+    <div class="col-md-6">
+        <h2 class="cold text-left">Majestic Users</h2>
+
+    </div>
+    <div class="col-md-6">
+        <div class=" marginTop10px">
+            @using (Ajax.BeginForm("Search", "Admin",
+            new AjaxOptions
+            {
+                HttpMethod = "POST",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "ChangeDiv"
+            }))
+            {
+                @Html.TextBox("keyword")
+                <button type="submit">Search</button>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="thumbnail marginTop10px" id="ChangeDiv">
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(@item.UserName, "UserDetails", new { username = item.UserName })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td></td>
+                <td>
+                    @Html.ActionLink("Manage Albums", "ManageAlbums", new { XuName = item.UserName })
+
+                </td>
+                <td>
+                    @Html.ActionLink("New Allbum", "NewAllbum", new { XuName = item.UserName })
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Majstic.Models.orders>
+
+
+@{
+    ViewBag.Title = "done";
+}
+
+<h2>Ready To Pickup Orders </h2>
+<p class="col-centered"> <strong id="Status"></strong></p>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id="@item.Id">
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+
+            <td>
+
+                @Html.ActionLink("Details", "OrderDetails", new { id = item.Id })
+
+                @Ajax.ActionLink("Picked Up", "Orderx", new { Oid = item.Id }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "Status",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete",
+                                       OnSuccess = "OnSuccess(" + @item.Id + ")"
+                                   }, new { @class = "btn btn-default btn-xs" })
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+

@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "Majestic Photo Studio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-8">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="~/Content/MJB/1.png" oncontextmenu="return false">
+                    <div class="carousel-caption">
+                        <h3>
+                            Smile for the future
+                        </h3>
+                        <p>
+                            For your special day with your special person
+                        </p>
+                    </div>
+                </div>
+                <!-- End Item -->
+                <div class="item">
+                    <img src="~/Content/MJB/2.png" oncontextmenu="return false">
+                    <div class="carousel-caption">
+                        <h3>
+                            A priceless smile
+                        </h3>
+                        <p>
+                            As they Grow , catch the memories
+                        </p>
+                    </div>
+                </div>
+                <!-- End Item -->
+                <div class="item">
+                    <img src="~/Content/MJB/3.png" oncontextmenu="return false">
+                    <div class="carousel-caption">
+                        <h3>
+                            Smile for the memories 
+                        </h3>
+                        <p>
+                            Catch the smile of your precious family
+                        </p>
+                    </div>
+                </div>
+                <!-- End Item -->
+                <div class="item">
+                    <img src="~/Content/MJB/4.png" oncontextmenu="return false">
+                    <div class="carousel-caption">
+                        <h3>
+                            Smile for the achievements 
+                        </h3>
+                        <p>
+                            when the hard work pays off, Congratulations..
+                        </p>
+                    </div>
+                </div>
+                <!-- End Item -->
+            </div>
+            <!-- End Carousel Inner -->
+            <ul class="nav nav-pills nav-justified">
+                <li data-target="#myCarousel" data-slide-to="0" class="active">
+                    <a href="#">
+                        Wedding<small>
+
+                        </small>
+                    </a>
+                </li>
+                <li data-target="#myCarousel" data-slide-to="1">
+                    <a href="#">
+                        Kids<small>
+
+                        </small>
+                    </a>
+                </li>
+                <li data-target="#myCarousel" data-slide-to="2">
+                    <a href="#">
+                        Family<small>
+
+                        </small>
+                    </a>
+                </li>
+                <li data-target="#myCarousel" data-slide-to="3">
+                    <a href="#">
+                        Graduation<small>
+
+                        </small>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div style="box-shadow: 0px 14px 32px -20px rgba(61,26,0,1);  background-color:white ; margin-top:5px;">
+            <h1 class="headline3  marginleft15px">Majestic </h1>
+            <blockquote class="marginleft15px">
+                <p style="text-align:justify">
+                    Since 2001 and Majestic studio has been sudanese number one choice for photography.
+                    with our professional staff and latest equipment. we make sure that your memories has been beautifully captured.
+                    In 2015, we launched our new website application, to enable our customer to access and share their photos from anywhere and on any device.
+                </p>
+                <footer>We draw smile on your picture... :)</footer>
+
+            </blockquote>
+            <div class="marginTop10px grd"></div>
+
+        </div>
+        <div style="box-shadow: 0px 14px 32px -20px rgba(61,26,0,1);  background-color:white ; margin-top:5px;">
+            <div class="PartialContent" data-url="@Url.Action("TotalNo", "Home")">
+                <img src="~/Content/SdnHotelsLoader.GIF" />
+            </div>
+        </div>
+        <div style="box-shadow: 0px 14px 32px -20px rgba(61,26,0,1);  background-color:white ; margin-top:5px;">
+
+            <div class="PartialContent" data-url="@Url.Action("Offers", "Home")">
+                <img src="~/Content/SdnHotelsLoader.GIF" class="col-centered" />
+            </div>
+
+        </div>
+
+        <div class="PartialContent" data-url="@Url.Action("social", "Home")">
+            <img src="~/Content/SdnHotelsLoader.GIF" class="col-centered" />
+        </div>
+
+        <div style="box-shadow: 0px 14px 32px -20px rgba(61,26,0,1);  background-color:white ; margin-top:5px;">
+            <div class="PartialContent" data-url="@Url.Action("ContactUS", "Home")">
+                <img src="~/Content/SdnHotelsLoader.GIF" class="col-centered" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="PartialContent " data-url="@Url.Action("HomeTimeLineImgs", "Home")">
+            <img src="~/Content/SdnHotelsLoader.GIF" class="col-centered" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+﻿@model Majstic.Models.orders
+
+@{
+    ViewBag.Title = "order Details";
+}
+
+<h3>Order No. @Model.Id Details</h3>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <h4>Order details</h4> <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Username)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OrderDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">
+            Change Order Status
+        </button>
+    </div>
+</div>
+
+<hr />
+<strong>Order Pictures</strong>
+<p class="col-centered" style="color:green"> <strong id="PicStatus"></strong> </p>
+<div class="PartialContent marginTop10px" data-url="@Url.Action("OrderPics", "Admin", new { Id = @Model.Id })">
+    <img src="~/Content/SdnHotelsLoader.GIF" />
+</div>
+
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Change Order No. @Model.Id status</h4>
+            </div>
+            <div class="modal-body">
+                <p class="col-centered thumbnail" id="status" style="color:red">
+
+                </p>
+                <hr />
+                @Ajax.ActionLink("Ready for Pickup", "ReadyOrder", new { Oid = @Model.Id }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "status",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "btn btn-default btn-block btn-sm" })
+
+                <hr />
+
+                @Ajax.ActionLink(" Under Processing", "OrderProcessing", new { Oid = @Model.Id }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "status",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "btn btn-default btn-block btn-sm" })
+
+                <hr />
+
+                @Ajax.ActionLink("Reject", "OrderReject", new { Oid = @Model.Id }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "status",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "btn btn-default btn-block btn-sm" })
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

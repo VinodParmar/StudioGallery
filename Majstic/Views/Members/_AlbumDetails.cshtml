@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Majstic.Models.VM.pic>
+
+
+<div class=" marginTop10px">
+
+    <div class="row">
+        <div class="col-md-9">
+            <h2 style="text-transform:uppercase">
+                @ViewBag.AlbumName  Album
+            </h2>
+        </div>
+        <div class="col-md-3">
+            <h1 class="col-centered">@ViewBag.NoPic</h1> <p class="col-centered"><strong>Pictures</strong></p>
+        </div>
+    </div>
+    <hr />
+</div>
+
+
+<div class="row marginTop10px thumbnail col-centered">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 marginTop10px ">
+            <img src="~/thumb/@item.themb" class="img-responsive thumbnail" oncontextmenu="return false" style="pointer-events:none" />
+            <p class="col-centered marginTop5px">
+                <strong>
+                    @Ajax.ActionLink("Full Size", "ImgDetails", new { ImgId = item.Id, imgName = item.imgName, ImgAlt = item.ImgAlt, Share = item.Share, thumb = item.themb }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ChangeIndex",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { })
+                </strong>
+            </p>
+            <div class="grd marginTop5px" ></div>
+        </div>
+    }
+
+</div>

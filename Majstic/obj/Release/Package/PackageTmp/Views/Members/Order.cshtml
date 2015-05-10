@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Order";
+}
+
+<h3>Step 1  - you have selected  <strong> @ViewBag.Name </strong></h3>
+<hr />
+
+<div class="row" style="box-shadow: 0px 14px 32px -20px rgba(61,26,0,1); background-color:white;">
+    <div class=" col-md-7 marginTop5px">
+    <blockquote class="marginleft15px">
+        <p>Details:</p>
+        <footer>
+            @ViewBag.Details
+        </footer>
+    </blockquote>
+    <p class="marginleft15px"> <strong> @ViewBag.Nop </strong> Pictures  * <strong>@ViewBag.NoC</strong> Copies </p>
+    <p class="marginleft15px"> <strong> @ViewBag.Price </strong> SDF - OR -<strong>@ViewBag.Points</strong> Points </p>
+
+</div>
+    <div class="col-md-5 marginTop5px">
+        <img src="~/thumb/offers/@ViewBag.thumb" class="img-responsive thumbnail col-centered" width="300" oncontextmenu="return false" />
+    </div>
+</div>
+
+
+<div class="thumbnail marginTop10px" id="ststus">
+    <p class="col-centered" id="TotalPic"> <strong> @ViewBag.AddNop / @ViewBag.Nop </strong> </p>
+</div>
+
+<div class="thumbnail marginTop10px">
+    <div class="PartialContent marginTop10px" data-url="@Url.Action("AlbumsNames", "Members")">
+        <img src="~/Content/SdnHotelsLoader.GIF" />
+    </div>
+
+
+    <div class="PartialContent" data-url="@Url.Action("LatestPic", "Members")" id="ToChange">
+        <img src="~/Content/SdnHotelsLoader.GIF" />
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Majstic.Models.VM.ABname>
+
+<p class="marginleft15px"><strong>Filter pictures below by selecting album name</strong></p>
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <p style="text-transform:uppercase">
+
+            <strong>
+                @Ajax.ActionLink("latest pictures", "LatestPic", null, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ToChange",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { })
+            </strong>
+        </p>
+    </div>
+
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <p style="text-transform:uppercase">
+                <strong>
+                    @Ajax.ActionLink(@item.ABNAme, "GetPicByAlbum", new { AID = item.ABI }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ToChange",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { })
+                </strong>
+            </p>
+        </div>
+    }
+
+
+</div>
+<hr />

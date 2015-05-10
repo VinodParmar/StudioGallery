@@ -1,0 +1,39 @@
+﻿<h4>@ViewBag.MSG</h4>
+<hr />
+<button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#myModal"> Check Out </button>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirm your Order</h4>
+            </div>
+            <div class="modal-body">
+                <p>   <strong>You  have Selected the Following Pictures</strong> please review them and click confirm to place you order </p>
+                <hr />
+                <div class="row">
+                    @foreach (var item in ViewBag.Thumbs)
+                    {
+                        <div class="col-md-2 marginTop5px">
+                            <img src="~/thumb/@item" class="img-responsive thumbnail" oncontextmenu="return false" />
+                        </div>
+                    }
+
+
+                </div>
+                <hr />
+
+                @Html.ActionLink("Confirm Order", "ConformOrder", "Members", null, new { @class = "btn btn-success btn-block" })
+            </div>
+            <div class="modal-footer">
+                @Html.ActionLink("Cancel Order", "Index", "Members", null, new { @class = "btn  btn-default" })
+
+
+
+                @Html.ActionLink("Edit Order", "EditOrder", "Members", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+</div>

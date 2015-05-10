@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="thumbnail">
+    <h2 class="cold">Welcome @User.Identity.Name</h2>
+    <div class="grd marginTop5px"></div>
+</div>
+
+<div class="row thumbnail col-centered marginTop5px" style="box-shadow: 0px 10px 31px 3px rgba(0,0,0,0.75);">
+    <div class="col-md-3 marginTop10px thumbnail">
+        <a href="@Url.Action("Register", "Account")">
+            <img src="~/Content/Icons/add.png" class="img-responsive ">
+        </a> <hr />
+        <p class="col-centered">
+            <strong>
+                Create new user profile
+            </strong>
+        </p>
+    </div>
+    <div class="col-md-3 marginTop10px thumbnail">
+        <a href="@Url.Action("users", "Admin")">
+            <img src="~/Content/Icons/albums.png" class="img-responsive">
+        </a> <hr />
+        <p class="col-centered">
+            <strong>
+                Manage  albums & images
+            </strong>
+        </p>
+    </div>
+    <div class="col-md-3 marginTop10px thumbnail">
+        <a href="@Url.Action("Index", "Offers")">
+            <img src="~/Content/Icons/offers.png" class="img-responsive">
+        </a>
+        <hr />
+        <p class="col-centered">
+            <strong> Manage Offers or Add new </strong>
+        </p>
+    </div>
+    <div class="col-md-3 marginTop10px thumbnail">
+
+        <a href="#" data-toggle="modal" data-target="#myModal">
+            <img src="~/Content/Icons/orders.png" class="img-responsive"> <hr />
+        </a>
+
+        <p class="col-centered">
+            <strong>   Orders and status </strong>
+        </p>
+    </div>
+    <div class="col-md-3 marginTop10px thumbnail">
+        <a href="@Url.Action("Index", "Account")">
+            <img src="~/Content/Icons/users.png" class="img-responsive">
+        </a> <hr />
+        <p class="col-centered">
+            <strong>
+                Manage  Users
+            </strong>
+        </p>
+    </div>
+
+    <div class="col-md-3 marginTop10px thumbnail">
+        <a href="@Url.Action("done", "Admin")">
+            <img src="~/Content/Icons/done.png" class="img-responsive">
+        </a> <hr />
+        <p class="col-centered">
+            <strong>
+                Ready for Pic
+            </strong>
+        </p>
+    </div>
+
+    <div class="col-md-3 marginTop10px thumbnail">
+        <a href="@Url.Action("ManageSlider", "Admin")">
+            <img src="~/Content/Icons/slider.png" class="img-responsive">
+        </a> <hr />
+        <p class="col-centered">
+            <strong>
+                Manage Slider Img
+            </strong>
+        </p>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Orders</h4>
+            </div>
+            <div class="modal-body">
+                <p class="col-centered marginTop10px"><strong>  @Html.ActionLink("New Orders ", "NewOrders")</strong></p>
+                <p class="col-centered marginTop10px"><strong>  @Html.ActionLink("Under Processing Orders ", "Processing")</strong></p>
+                <p class="col-centered marginTop10px"><strong>  @Html.ActionLink("Rejected Orders ", "Rejected")</strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

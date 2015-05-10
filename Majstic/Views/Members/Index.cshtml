@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = @User.Identity.Name;
+}
+
+
+@*<h3> <strong> @User.Identity.Name </strong> account</h3>
+<hr />*@
+<div class="row marginTop10px">
+    <div class="col-md-2 marginTop10px " style="box-shadow: 0px 0px 15px 0px #888888;">
+        <div class="marginTop10px " id="ProfileInfoDiv" >
+            <div class="PartialContent" data-url="@Url.Action("Prview", "Members")">
+                <img src="~/Content/SdnHotelsLoader.GIF" oncontextmenu="return false" style="pointer-events:none" />
+            </div>
+        </div>
+        <div class="col-centered">
+            @Ajax.ActionLink("My Albums", "GetMyAlbums", null, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ChangeIndex",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "btn btn-default btn-block  marginTop10px" })
+        </div>
+        <div class="col-centered">
+            @Ajax.ActionLink("My Time Line", "MyPublicImg", new { UserName = User.Identity.Name }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ChangeIndex",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "btn btn-default btn-block marginTop10px" })
+        </div>
+        <div class="col-centered">
+            @Ajax.ActionLink("Majestic Packges", "Offers", null, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ChangeIndex",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "btn btn-default btn-block marginTop10px" })
+        </div>
+        <div class="col-centered">
+            @Html.ActionLink("Create Mini Album Book", "MiniBook", "Members", new { x = 4}, new { @class = "btn btn-default btn-block  marginTop10px" })
+        </div>
+        <div class="col-centered">
+            @Html.ActionLink("Create Large Album Book", "MiniBook", "Members", new { x = 5 }, new { @class = "btn btn-default btn-block  marginTop10px" })
+        </div>
+        <div class="col-centered">
+            @Html.ActionLink("New Print Order", "NewOrder", "Members", null, new { @class = "btn btn-default btn-block  marginTop10px" })
+        </div>
+        <div class="col-centered ">
+            @Ajax.ActionLink("My Orders", "MyOrders", null, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ChangeIndex",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "btn btn-default btn-block marginTop10px" })
+        </div>
+       
+        <div class="col-centered">
+            @Html.ActionLink("Settings", "Manage", "Account", null, new { @class = "btn btn-default btn-block  marginTop10px" })
+        </div>
+        <div class="grd marginTop10px"></div>
+    </div>
+    <div class="col-md-10" >
+        <div id="ChangeIndex">
+            <div class="PartialContent" data-url="@Url.Action("GetMyAlbums", "Members")">
+                <img src="~/Content/SdnHotelsLoader.GIF" />
+            </div>
+        </div>
+    </div>
+</div>
+

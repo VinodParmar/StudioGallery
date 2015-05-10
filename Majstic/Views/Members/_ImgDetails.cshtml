@@ -1,0 +1,75 @@
+﻿@model Majstic.Models.VM.pic
+
+
+
+<div id="Change" class="marginTop10px">
+    <div class="row">
+        <div class="col-md-6">
+            <p class="thumbnail">  Shared : <strong> @Model.Share </strong></p>
+            <p class="thumbnail">   Image ID : <strong> @Model.imgName </strong></p>
+        </div>
+        <div class="col-md-6">
+
+            <ul class=" coolHandLuke col-centered">
+                <li>
+                    <span class="green">&nbsp;</span>
+                    @Ajax.ActionLink("Back to Album", "AlbumDetails", new { albumId = ViewBag.ABI, AlbumName = ViewBag.AlbumName, NoPic = ViewBag.NoPic, Status = ViewBag.Status, Cdate = ViewBag.Cdate }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "Change",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "" })
+                </li>
+
+
+                <li>
+                    <span class="green">&nbsp;</span>
+
+                    @Ajax.ActionLink("Make Profile Picture", "ChangeProPic", new { thumb = Model.themb }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ProfileInfoDiv",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "" })
+                </li>
+            </ul>
+            <hr />
+            <ul class=" coolHandLuke col-centered">
+
+                <li>
+                    <span class="red">&nbsp;</span>
+
+                    @Ajax.ActionLink("Private Share", "PShare", new { id = Model.Id }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ShareME",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnSuccess = "showDatePicker",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "" })
+                </li>
+                <li>
+                    <span class="yellow">&nbsp;</span>
+
+                    @Ajax.ActionLink("Public Share", "ChanceStatue", new { Id = Model.Id, status = true }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ShareME",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "" })
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div id="ShareME"></div>
+    <hr />
+    <img src="/Show/ShowPhotoForUser/@Model.Id" alt="" class="img-responsive col-centered thumbnail" oncontextmenu="return false" style="pointer-events:none" />
+</div>

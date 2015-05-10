@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Majstic.Models.VM.TimeLinePic>
+
+@{
+    ViewBag.Title =  "Time Line";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+<div class="row marginTop10px">
+
+    @foreach (var item in Model)
+    {
+        
+        <div class=" marginTop10px card">
+            <p class=""><img src="~/thumb/@item.PicThumb" class="img-thumbnail" width="50" /></p>
+            <p class=""><strong>@item.UserName</strong></p>
+            <img src="/Show/ShowPhoto/@item.Id" alt="" class="img-responsive col-centered thumbnail" oncontextmenu="return false" style="pointer-events:none" /> <br />
+            <div class="col-centered">
+                <div class="fb-comments " data-href="http://majesticphotostudio.com/Home/Pic/@item.Id" data-width="550" data-numposts="5" data-colorscheme="light"></div>
+            </div>
+            <div class="marginTop10px grd"></div>
+
+        </div>
+
+
+
+    }
+</div>
+
+

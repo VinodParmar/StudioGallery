@@ -1,0 +1,65 @@
+﻿@model Majstic.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+<div class="  row marginTop10px" style="box-shadow: 0px 0px 15px 0px #888888;">
+    <h2 class="headline3 ">Login to Majestic Photo Studio</h2>
+
+    <div class="col-md-6 ">
+        <section id="loginForm" class="marginleft15px marginTop10px">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Log in" class="btn btn-default" />  @Html.ActionLink("Forget your password?", "ResetPassword" , "Home")
+                    </div>
+                </div>
+
+            }
+        </section>
+    </div>
+    <div class="col-lg-6">
+        <blockquote class="marginleft15px">
+            <p style="text-align:justify">
+                Members with account can access all their pictures that has been taken with us.
+                Visit us today to claim your account and have your pictures with you everywhere 
+            </p>
+            <footer>We at Majestic amied to serve you better ...</footer>
+
+
+        </blockquote>
+        @*<div class="marginTop10px grd"></div>*@
+    </div>
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

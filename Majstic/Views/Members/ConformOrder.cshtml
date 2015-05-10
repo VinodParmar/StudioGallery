@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "ConformOrder";
+}
+
+<h2> Thank you ... </h2>
+
+<p class="col-centered"> your order now under processing -  <strong>Order No. @ViewBag.OrderID</strong></p>
+<hr />
+<p> <strong> Your order pictures: </strong></p>
+<div class="row">
+    @foreach (var item in ViewBag.Thumbs)
+    {
+        <div class="col-md-3 marginTop5px">
+            <img src="~/thumb/@item" class="img-responsive thumbnail" oncontextmenu="return false" style="pointer-events:none" />
+        </div>
+    }
+</div>
+

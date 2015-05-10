@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Majstic.Models.VM.pic>
+
+<div class="thumbnail marginTop10px">
+    <h4 class="col-centered marginTop5px"><strong> Your public pictures </strong></h4>
+
+    <p class="col-centered marginTop5px" style="color:#bab8b8">Public pictures are displayed in Majestic TimeLine and can be share</p>
+    <div class="grd marginTop5px"></div>
+    <div class="grd marginTop5px" ></div>
+
+    <h2 id="ShareME"></h2>
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class=" col-md-6 marginTop10px">
+                <img src="~/thumb/@item.themb" class="img-responsive thumbnail col-centered" oncontextmenu="return false" />
+                <div class="col-centered">
+                    <p>
+                        @Html.ActionLink("Comments", "Pic", "Home", new { Id = item.Id }, null) -
+
+
+                        @Ajax.ActionLink("Make Private", "ChanceStatue", new { Id = item.Id, status = false }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ShareME",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "" })
+                    </p>
+                </div>
+            </div>
+
+
+        }
+
+
+    </div>
+</div>

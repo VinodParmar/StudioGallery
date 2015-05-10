@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Majstic.Models.VM.pic>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4  marginTop10px" id="@item.Id">
+            <div class="thumbnail">
+                <img src="~/thumb/@item.themb" class="img-responsive   marginTop5px" oncontextmenu="return false" style="pointer-events:none" />
+
+                <hr />
+                <h4>Printing options</h4>
+                <div class="col-centered">
+                    @Ajax.ActionLink("Passport", "AddPicToOrder", new { Id = item.Id, thumb = item.themb, Ty = 1, PicName = item.imgName }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "OrderStatus",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete",
+                                       OnSuccess = "OnSuccess(" + @item.Id + ")"
+                                   }, new { @class = "btn btn-success btn-xs" })
+
+                    @Ajax.ActionLink("Postal", "AddPicToOrder", new { Id = item.Id, thumb = item.themb, Ty = 2, PicName = item.imgName }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "OrderStatus",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete",
+                                       OnSuccess = "OnSuccess(" + @item.Id + ")"
+                                   }, new { @class = "btn btn-success btn-xs" })
+
+
+                </div>
+                <hr />
+                <h4>Enlargment options</h4>
+                <div class="col-centered">
+                    @Ajax.ActionLink("30*40", "AddPicToOrder", new { Id = item.Id, thumb = item.themb, Ty = 31, PicName = item.imgName }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "OrderStatus",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete",
+                                       OnSuccess = "OnSuccess(" + @item.Id + ")"
+                                   }, new { @class = "btn btn-default btn-xs" })
+
+                    @Ajax.ActionLink("40*50", "AddPicToOrder", new { Id = item.Id, thumb = item.themb, Ty = 32, PicName = item.imgName }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "OrderStatus",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete",
+                                       OnSuccess = "OnSuccess(" + @item.Id + ")"
+                                   }, new { @class = "btn btn-default btn-xs" })
+
+                    @Ajax.ActionLink("50*60", "AddPicToOrder", new { Id = item.Id, thumb = item.themb, Ty = 33, PicName = item.imgName }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "OrderStatus",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete",
+                                       OnSuccess = "OnSuccess(" + @item.Id + ")"
+                                   }, new { @class = "btn btn-default btn-xs" })
+
+                    @Ajax.ActionLink("50*70", "AddPicToOrder", new { Id = item.Id, thumb = item.themb, Ty = 34, PicName = item.imgName }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "OrderStatus",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete",
+                                       OnSuccess = "OnSuccess(" + @item.Id + ")"
+                                   }, new { @class = "btn btn-default btn-xs" })
+
+                    @Ajax.ActionLink("60*90", "AddPicToOrder", new { Id = item.Id, thumb = item.themb, Ty = 35, PicName = item.imgName }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "OrderStatus",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete",
+                                       OnSuccess = "OnSuccess(" + @item.Id + ")"
+                                   }, new { @class = "btn btn-default btn-xs" })
+
+                    @Ajax.ActionLink("70*100", "AddPicToOrder", new { Id = item.Id, thumb = item.themb, Ty = 36, PicName = item.imgName }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "OrderStatus",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete",
+                                       OnSuccess = "OnSuccess(" + @item.Id + ")"
+                                   }, new { @class = "btn btn-default btn-xs" })
+
+                    @Ajax.ActionLink("100*150", "AddPicToOrder", new { Id = item.Id, thumb = item.themb, Ty = 37, PicName = item.imgName }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "OrderStatus",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete",
+                                       OnSuccess = "OnSuccess(" + @item.Id + ")"
+                                   }, new { @class = "btn btn-default btn-xs marginTop5px" })
+
+
+                </div>
+
+            </div>
+        </div>
+    }
+
+
+</div> 

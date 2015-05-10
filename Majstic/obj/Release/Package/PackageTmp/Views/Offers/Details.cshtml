@@ -1,0 +1,85 @@
+﻿@model Majstic.Models.offer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2> Offer Details</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Dis)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Dis)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NoShots)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NoShots)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NoCopy)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NoCopy)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.points)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.points)
+            </dd>
+
+
+
+
+
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.available)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.available)
+            </dd>
+
+        </dl>
+    </div>
+    <div class="col-md-8">
+        <img src="~/thumb/offers/@Model.thumb" class="img-responsive thumbnail">
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

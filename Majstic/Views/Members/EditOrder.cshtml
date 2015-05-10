@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Majstic.Models.VM.OrderVM>
+
+@{
+    ViewBag.Title = "EditOrder";
+}
+
+<blockquote class="marginleft15px">
+    <p style="text-align:justify">
+       Edit your Order...
+    </p>
+    <footer>Remove unwanted pictures then press back .. </footer>
+
+</blockquote>
+<div class="thumbnail" id="ststus">
+    <p class="col-centered" id="TotalPic"> <strong> @ViewBag.AddNop / @ViewBag.Nop </strong> </p>
+</div>
+<hr />
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3" id="@item.Id">
+            <div class="col-centered">
+                <img src="~/thumb/@item.thumb" class="img-responsive thumbnail col-centered" width="150" oncontextmenu="return false" style="pointer-events:none" />
+            @Ajax.ActionLink("Remove", "RemovePicToOrder", new { Id = item.Id, thumb = item.thumb }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ststus",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete",
+                                       OnSuccess = "OnSuccess(" + @item.Id + ")"
+                                   }, new { @class = "btn btn-default btn-xs col-centered" })</div>
+            <hr />
+        </div>
+    }
+
+</div>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Majstic.Models.OrderDetails>
+
+@{
+    ViewBag.Title = "CH";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Check Out</h3>
+        <p class="" style="color:#bab8b8">Please Review your order befor chcoking out</p>
+    </div>
+    <div class="col-md-6">
+        <div id="">
+            <p class="col-centered">  <strong id="OrderStatus"> </strong></p>
+            <hr />
+            @Html.ActionLink("Check Out", "CHD", "Members", null, new { @class = "btn btn-default btn-block " })
+        </div>
+    </div>
+</div>
+
+<div class="thumbnail marginTop5px">
+    <table class="table">
+        <tr>
+            <th>
+                <strong>Picture</strong>
+            </th>
+            <th>
+                <strong>Picture Name</strong>
+            </th>
+
+            <th>
+                <strong>Printed Order</strong>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+    {
+            <tr>
+
+                <td>
+                    <img src="~/thumb/@item.thumb" class="img-responsive thumbnail  " width="200" oncontextmenu="return false" style="pointer-events:none" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PicName)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderedFor)
+                </td>
+                <td></td>
+            </tr>
+    }
+
+    </table>
+</div>

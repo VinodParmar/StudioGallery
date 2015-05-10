@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Majstic.Models.VM.pic>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3" id="@item.Id">
+            <img src="~/thumb/@item.themb" class="img-responsive thumbnail  marginTop5px" oncontextmenu="return false" style="pointer-events:none" />
+
+            <hr />
+            <div class="col-centered">
+                @Ajax.ActionLink("Add", "AddPicToOrder", new { Id = item.Id, thumb = item.themb, Ty = ViewBag.x, PicName = item.imgName }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "OrderStatus",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete",
+                                       OnSuccess = "OnSuccess(" + @item.Id + ")"
+                                   }, new { @class = "btn btn-success btn-xs" })
+
+            </div>
+
+        </div>
+    }
+
+
+</div>

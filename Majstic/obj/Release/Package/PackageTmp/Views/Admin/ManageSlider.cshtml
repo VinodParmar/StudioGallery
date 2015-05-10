@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "ManageSlider";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Slider Imges</h2>
+
+<div class="row">
+    <div class="col-md-9">
+        <h3>Slider - Img1</h3>
+        <img src="~/Content/MJB/1.png" class="img-responsive" />
+    </div>
+    <div class="col-md-3">
+        <h3>Upload new  - Img1</h3>
+
+        @using (Html.BeginForm("UploadSlider", "Admin", new {x = 1}, FormMethod.Post,new { enctype = "multipart/form-data" }))
+        {
+            <div class="btn btn-default image-preview-input">
+                <span class="glyphicon glyphicon-folder-open"></span>
+                <span class="image-preview-input-title">Browse</span>
+                <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" /> <!-- rename it -->
+            </div>
+            <input type="submit" value="Upload" class="btn btn-default col-centered" />
+        }
+    </div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-md-9">
+        <h3>Slider - Img2</h3>
+        <img src="~/Content/MJB/2.png" class="img-responsive" />
+    </div>
+    <div class="col-md-3">
+        <h3>Upload new  - Img2</h3>
+
+        @using (Html.BeginForm("UploadSlider", "Admin", new { x = 2 }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="btn btn-default image-preview-input">
+                <span class="glyphicon glyphicon-folder-open"></span>
+                <span class="image-preview-input-title">Browse</span>
+                <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" /> <!-- rename it -->
+            </div>
+            <input type="submit" value="Upload" class="btn btn-default col-centered" />
+        }
+    </div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-md-9">
+        <h3>Slider - Img3</h3>
+        <img src="~/Content/MJB/3.png" class="img-responsive" />
+    </div>
+    <div class="col-md-3">
+        <h3>Upload new  - Img3</h3>
+
+        @using (Html.BeginForm("UploadSlider", "Admin", new { x = 3 }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="btn btn-default image-preview-input">
+                <span class="glyphicon glyphicon-folder-open"></span>
+                <span class="image-preview-input-title">Browse</span>
+                <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" /> <!-- rename it -->
+            </div>
+            <input type="submit" value="Upload" class="btn btn-default col-centered" />
+        }
+    </div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-md-9">
+        <h3>Slider - Img4</h3>
+        <img src="~/Content/MJB/4.png" class="img-responsive" />
+    </div>
+    <div class="col-md-3">
+        <h3>Upload new  - Img4</h3>
+
+        @using (Html.BeginForm("UploadSlider", "Admin", new { x = 4 }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="btn btn-default image-preview-input">
+                <span class="glyphicon glyphicon-folder-open"></span>
+                <span class="image-preview-input-title">Browse</span>
+                <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" /> <!-- rename it -->
+            </div>
+            <input type="submit" value="Upload" class="btn btn-default col-centered" />
+        }
+    </div>
+</div>
+<hr />

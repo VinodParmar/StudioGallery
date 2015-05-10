@@ -1,0 +1,109 @@
+﻿@model Majstic.Models.offer
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>offer</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Dis, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Dis)
+                @Html.ValidationMessageFor(model => model.Dis)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoShots, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoShots)
+                @Html.ValidationMessageFor(model => model.NoShots)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoCopy, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoCopy)
+                @Html.ValidationMessageFor(model => model.NoCopy)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price)
+                @Html.ValidationMessageFor(model => model.Price)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.points, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.points)
+                @Html.ValidationMessageFor(model => model.points)
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.available, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.available)
+                @Html.ValidationMessageFor(model => model.available)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<hr />
+<div class="thumbnail">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/thumb/offers/@Model.thumb" class="img-responsive">
+        </div>
+        <div class="col-md-6">
+            <h4>Upload Room Image Gallery:</h4>
+            @using (Html.BeginForm("UploadImg", "Offers", new { offerID = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <label>Change picture</label>
+                <input type="file" name="fileUpload" class="btn btn-default" /><br />
+                <input type="submit" value="Upload" class="btn btn-default" />
+            }
+        </div>
+    </div>
+</div>
+<hr />
+<div>
+    @Html.ActionLink("Back to offers List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

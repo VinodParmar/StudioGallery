@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <meta http-equiv="imagetoolbar" content="no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
+
+
+</head>
+<body style="background: linear-gradient(#e1e1e1, #ffffff, #e1e1e1); background-image: url(http://www.majesticphotostudio.com/Content/Icons/bk.png);">
+
+    <div id="perspective" class="perspective effect-airbnb">
+        <div class="container">
+            <div class="wrapper">
+                <!-- wrapper needed for scroll -->
+                <!-- Top Navigation -->
+                <div>
+                    <div style="background: linear-gradient(45deg, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 14%,rgba(255,248,66,1) 31%,rgba(255,195,0,1) 51%,rgba(173,135,32,1) 67%,rgba(193,50,59,1) 82%,rgba(109,0,1,1) 100%);">
+                        <ul class="list-inline">
+                            <li>
+                                <img src="~/Content/MJB/logo.png" class="img-responsive" width="50" />
+                            </li>
+                            <li><h1 class="cold2">Majestic Photo Studio</h1></li>
+
+                        </ul>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><button id="showMenu"> Show Menu</button> </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="text-right"> @Html.Partial("_LoginPartial") </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="marginTop5px" style="box-shadow: 0px 0px 15px 0px #888888;">
+                        @RenderBody()
+                        <div class="grd marginTop5px"></div>
+                        <footer>
+                            <p class="text-center text-warning">&copy; @DateTime.Now.Year - Copy rights reserved to Majestic </p>
+                            <p class="text-center text-info"> Powered  by <a href="http://www.human06.com">Human06  <img src="http://human06.com/img/logo.png" class="img-responsive col-centered" width="60" /></a> </p>
+                        </footer>
+                    </div>
+
+                </div><!-- /main -->
+            </div><!-- wrapper -->
+        </div><!-- /container -->
+        <nav class="outer-nav left vertical">
+            <h1>Majestic Photo Studio</h1>
+            <a href="@Url.Action("Index" , "Home")" class="icon-home" style="color:#270015">Home</a>
+            <a href="@Url.Action("TimeLine" ,"Home")" class="icon-news" style="color:#270015">TimeLine</a>
+            <a href="@Url.Action("MOffer" ,"Home")" class="icon-image" style="color:#270015">Offers</a>
+            <a href="@Url.Action("Index", "Members")" class="icon-upload" style="color:#270015">Members Portal</a>
+        </nav>
+    </div>
+
+
+
+    <div id="divLoading" style="position:fixed" class=" col-centered" hidden="hidden">
+        <img src="~/Content/SdnHotelsLoader.GIF" />
+    </div>
+
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#myCarousel').carousel({
+                interval: 4000
+            });
+
+            var clickEvent = false;
+            $('#myCarousel').on('click', '.nav a', function () {
+                clickEvent = true;
+                $('.nav li').removeClass('active');
+                $(this).parent().addClass('active');
+            }).on('slid.bs.carousel', function (e) {
+                if (!clickEvent) {
+                    var count = $('.nav').children().length - 1;
+                    var current = $('.nav li.active');
+                    current.removeClass('active').next().addClass('active');
+                    var id = parseInt(current.data('slide-to'));
+                    if (count == id) {
+                        $('.nav li').first().addClass('active');
+                    }
+                }
+                clickEvent = false;
+            });
+        });
+
+
+
+        $(document).ready(function () {
+            $('#media').carousel({
+                pause: true,
+                interval: false,
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+        function onBegin() {
+            $("#divLoading").show();
+            //$("#divLoading").html('<image src="~/Content/SdnHotelsLoader.GIF" alt="Loading, please wait" />');
+        }
+
+
+        function onComplete() {
+            $("#divLoading").hide();
+        }
+
+        function OnSuccess(Id) {
+
+            $("#" + Id).fadeOut("slow");
+
+            var fade_out = function () {
+                $("#MSGDIV2").fadeOut("slow");
+                $("#MSGDIV").fadeOut("slow");
+            }
+
+            setTimeout(fade_out, 3000);
+        }
+
+
+        $(document).ready(function (e) {
+            $(".PartialContent").each(function (index, item) {
+                var url = $(item).data("url");
+                if (url && url.length > 0) {
+                    $(item).load(url);
+                }
+            });
+
+        });
+
+
+
+        $(function () {
+            $('.panel-image img.panel-image-preview').on('click', function (e) {
+                $(this).closest('.panel-image').toggleClass('hide-panel-body');
+            });
+        });
+
+
+    </script>
+
+</body>
+</html>

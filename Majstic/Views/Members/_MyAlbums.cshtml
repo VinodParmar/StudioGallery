@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Majstic.Models.VM.albums>
+<div class=" marginTop10px">
+    <h2 class=" marginTop5px text-success"><strong >  Explore your albums </strong></h2>
+    <blockquote class="marginleft15px">
+        <p style="text-align:justify">
+            You have total of @ViewBag.No
+         </p>
+        <footer>Each photo session you have taken with Majestic has been grouped into an album </footer>
+
+    </blockquote>
+    
+   
+    <div class="grd marginTop10px"></div>
+    <div class="container marginTop10px thumbnail">
+        <div class="row form-group">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-12 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-image hide-panel-body">
+                            <img src="~/thumb/@item.thumnImg" class="panel-image-preview img-responsive" oncontextmenu="return false" style="pointer-events:none" />
+                        </div>
+                        <div class="panel-body">
+                            <h4>@item.albmName</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper et.</p>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <h4 style="text-transform:uppercase">@item.albmName</h4>
+                            <p>
+                                @item.NoP Pictures - @{
+                if (item.status == true)
+                {
+                    <strong>Shared Album</strong>
+                }
+                else
+                {
+                    <strong>Private Album</strong>
+                }
+                                } - @item.Cdate.ToShortDateString()
+                            </p>
+                            @Ajax.ActionLink("Explore", "AlbumDetails", new { albumId = item.id, AlbumName = item.albmName, NoPic = item.NoP, Status = item.status, Cdate = item.Cdate }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ChangeIndex",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "btn btn-default btn-block" })
+                            
+
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="grd marginTop5px"></div>*@
+            }
+
+
+
+
+
+
+        </div>
+    </div>
+</div>

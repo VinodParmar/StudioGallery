@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "NewOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Start you new order</h3>
+        <p class="" style="color:#bab8b8">Filter Pictures blow and select your order</p>
+    </div>
+    <div class="col-md-6">
+        <div id="">
+            <p class="col-centered">  <strong id="OrderStatus"> you haave selected 0 picture</strong></p>
+            <hr />
+            @Html.ActionLink("Check Out", "CH", "Members", null, new { @class = "btn btn-default btn-block " })
+        </div>
+    </div>
+</div>
+
+<div class="thumbnail marginTop10px">
+    <div class="PartialContent marginTop10px" data-url="@Url.Action("AlbumsNames", "Members")">
+        <img src="~/Content/SdnHotelsLoader.GIF" />
+    </div>
+
+
+    <div class="PartialContent" data-url="@Url.Action("LatestPic", "Members")" id="ToChange">
+        <img src="~/Content/SdnHotelsLoader.GIF" />
+    </div>
+</div>

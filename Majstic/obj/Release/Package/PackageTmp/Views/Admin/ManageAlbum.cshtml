@@ -1,0 +1,72 @@
+﻿@model Majstic.Models.album
+
+@{
+    ViewBag.Title = "Manage Album";
+}
+
+
+<div class="row">
+    <div class="col-md-3" >
+        <div style="position: fixed; background-color:#f3eeee;">
+            <h4>Manage <strong> @Model.AlbumName </strong> Album</h4>
+
+            <div class="thumbnail">
+                <dl class="dl-horizontal">
+                    <dt>User Name</dt>
+                    <dd>@Model.username</dd>
+                    <dt>Created Date</dt>
+                    <dd>@Model.CreateDate.ToShortDateString()</dd>
+                    <dt>Status</dt>
+                    <dd>@ViewBag.status</dd>
+                    <dt>
+                        Privecy
+                    </dt>
+                    <dd>@ViewBag.Share</dd>
+                    <dt>Number of Pictures</dt>
+                    <dd>@Model.NoOFPics</dd>
+                </dl>
+            </div>
+
+            <div class="col-centered " id="UpdateDiv"></div>
+            <hr />
+            <div class="col-centered">
+
+                @Html.ActionLink("Delet Album", "DeletAlbum", "Admin", null, new { @class = "btn btn-danger btn-xs" })
+
+
+                @Ajax.ActionLink("Active Album", "ChangeAlbumStatus", new { Id = Model.Id, status = true }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "UpdateDiv",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "btn btn-success btn-xs" })
+
+
+                @Ajax.ActionLink("Dis-active Album", "ChangeAlbumStatus", new { Id = Model.Id, status = false }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "UpdateDiv",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "btn btn-default btn-xs" })
+            </div>
+            <hr />
+            <div>
+                <div class="PartialContent" data-url="@Url.Action("AddNewImage", "Admin", new { AlbumId = @Model.Id, UserName = @Model.username })">
+                    <img src="~/Content/SdnHotelsLoader.GIF" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9 marginTop5px">
+        <div id="ChangeForDetails">
+            <div class="PartialContent" data-url="@Url.Action("Albumthumbs", "Admin")">
+                <img src="~/Content/SdnHotelsLoader.GIF" />
+            </div>
+        </div>
+    </div>
+</div>
+

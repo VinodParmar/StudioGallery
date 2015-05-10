@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Majstic.Models.offer>
+
+<h2 class=" marginTop10px marginleft15px headline3" >Majestic Offers</h2>
+
+<div class="row  ">
+
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-6 marginTop10px">
+            <div class="well col-centered  marginleft15px MR15" style="box-shadow: 5px 0px 6px -4px rgba(0,0,0,0.27); ">
+                <h3 style="text-transform:uppercase ; color:#bf843b"><b>@item.Title</b></h3>
+                <hr>
+                <p><img src="~/thumb/offers/@item.thumb" class="img-responsive" oncontextmenu="return false" /></p>
+                <hr>
+                <p> <strong> @item.NoShots </strong> Pictures * <strong>@item.NoCopy</strong> Copies </p>
+                <hr>
+                @*<p><b>@item.Price SDG - or - @item.points Points</b></p>*@
+                <hr />
+                <p><b>@item.Dis</b></p>
+                <hr>
+                @*<a href="#" class="btn  btn-block" style="background-color:#bf843b">Details</a>*@
+            </div>
+        </div>
+    }
+
+</div>
+<p class="text-right">
+    @Html.ActionLink("View All Offers", "MOffer", "Home", null, new {@class="button yellow" })
+    @*<button class="button yellow"> Majestic <br />Offers</button>*@
+</p>
+<div class="grd"></div>

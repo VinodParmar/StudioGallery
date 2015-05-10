@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Majstic.Models.offer>
+
+<div class="thumbnail">
+    <h3 class="col-centered marginTop5px text-success"><strong> Avilable offers  </strong></h3><div class="grd marginTop10px"></div>
+
+    <div class="row marginTop10px">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4  ">
+                <div class="thumbnail">
+                    
+                    <div>
+                        <img src="~/thumb/offers/@item.thumb" class="img-responsive col-centered marginTop5px" oncontextmenu="return false" />
+                        @*</div>
+            <div class="col-md-8">*@
+                        <h5 class="col-centered  marginTop5px"> <strong> @item.Title </strong></h5>
+
+                        <p class="col-centered marginTop5px">  @item.Dis </p>
+                        <hr />
+                        <ul class="list-inline col-centered">
+                            <li>Specification:</li>
+                            <li>
+                                <p>  <strong> @item.NoShots </strong> Pictures <strong>* @item.NoCopy </strong> Copies</p>
+                            </li>
+                        </ul>
+                        <ul class="list-inline col-centered">
+                            <li>Price:</li>
+                            <li>
+                                <p>  <strong> @item.Price </strong> SDG - OR -<strong>  @item.points </strong> Points</p>
+                            </li>
+                        </ul>
+                        <hr />
+                        <p class="col-centered"> <strong>     @Html.ActionLink("ORDER", "Order", "Members", new { OfferID = @item.Id, Details = @item.Dis, Nop = @item.NoShots, NoC = @item.NoCopy, Price = @item.Price, Points = @item.points, Name = @item.Title, thumb = @item.thumb }, null)</strong></p>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

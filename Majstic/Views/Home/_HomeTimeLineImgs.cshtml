@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Majstic.Models.VM.TimeLinePic>
+<div class="row   marginTop10px col-centered MR15 marginleft15px" style="box-shadow: 0px 14px 32px -20px rgba(61,26,0,1);  background-color:white">
+    <h2 class="headline3  marginleft15px">Majsetic Time Line</h2>
+    <blockquote class="marginleft15px">
+        <p style="text-align:justify ; font-size:small; color:#808080">
+        Pictures shown on the timeline has been shared from Majestic users profile
+        </p>
+      
+    </blockquote>
+    <div class="marginTop10px grd"></div>
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-10  col-centered">
+            <a href=""> <img src="~/thumb/@item.Thumb" class=" img-responsive col-centered" /></a>
+            <div class="  marginTop5px">
+
+                <img src="~/thumb/@item.PicThumb" class="img-thumbnail" width="30" oncontextmenu="return false"  style="pointer-events:none"/>
+
+                <p class="marginTop5px" style="text-transform:uppercase"> <strong>@Html.ActionLink(@item.UserName, "USerLine", "Home", new { UN = item.UserName }, null) </strong></p>
+
+
+            </div>
+        </div>
+
+    }
+
+
+</div>
+<p class="text-right">
+    @Html.ActionLink("View Timeline...", "TimeLine", "Home", null, new { @class = "button yellow" })
+</p>

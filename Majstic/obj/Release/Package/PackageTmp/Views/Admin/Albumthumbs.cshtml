@@ -1,0 +1,48 @@
+﻿@model IEnumerable<string>
+
+
+<div class="row">
+
+
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-6 marginTop5px ">
+            <div class="thumbnail">
+                <img src="~/thumb/@item" class=" img-responsive img-rounded  col-centered">
+                <hr />
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#@item.Replace("." , string.Empty)">
+                    Remove
+                </button>
+                @Ajax.ActionLink("Details", "ImageDetails", new { imageName = @item }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ChangeForDetails",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "btn btn-default btn-xs" })
+            </div>
+        </div>
+
+        <div class="modal fade" id="@item.Replace("." , string.Empty)" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Confirm deleting  @item !?</h4>
+                    </div>
+                    <div class="modal-body" style="color:#ff0000">
+                        Are you sure you want to delete @item  from this album ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        @Html.ActionLink("Yes , Delete", "DeletImg", "Admin", new { imgName = @item }, new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>

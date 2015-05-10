@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Majstic.Models.VM.albums>
+
+@{
+    ViewBag.Title = "ManageAlbums";
+}
+
+<h2> @ViewBag.UserName has @ViewBag.Total album(s)</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 marginTop10px">
+
+            <div class="thumbnail row ">
+                <a href="@Url.Action("ManageAlbum", "Admin", new { Id = item.id })">
+                    <h3 class="col-centered ">@item.albmName</h3>
+                </a>
+                    <hr />
+                    <div class="col-md-6">
+
+                        <p>No. of Pictures: <strong>  @item.NoP </strong></p>
+                        <p>Added on: <strong>  @item.Cdate.ToShortDateString() </strong></p>
+                        <p>Published: <strong>  @item.status </strong></p>
+
+                    </div>
+                    <div class="col-md-6">
+                        <img src="~/thumb/@item.thumnImg" class=" img-responsive img-rounded  col-centered">
+                    </div>
+
+
+</div>
+        
+        </div>
+
+
+    }
+</div>

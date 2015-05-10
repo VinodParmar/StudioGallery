@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Majstic.Models.orders>
+
+<div class="thumbnail marginTop10px">
+    <h4 class="col-centered marginTop5px text-success"><strong> Your orders details </strong></h4>
+    <div class="grd marginTop10px"></div>
+    <table class="table table-hover marginTop10px">
+        <tr>
+            <th>
+                <strong>Order No</strong>
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PickUpdate)
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @{
+            if (item.Status == "Ready for Pick Up")
+            {
+                @Html.DisplayFor(modelItem => item.PickUpdate)
+            }
+            else
+            {
+                <p>NA</p>
+            }
+                    }
+
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>

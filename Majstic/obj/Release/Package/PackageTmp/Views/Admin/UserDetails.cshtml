@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "UserDetails";
+}
+
+<div class="thumbnail col-centered">
+    <h2 class="cold">@ViewBag.Name Profile</h2>
+</div>
+<div class=" thumbnail row col-centered marginTop5px">
+    <div class="col-md-4">
+        <dl class="dl-horizontal">
+            <dt>Full Name</dt>
+            <dd>@ViewBag.FulName</dd>
+
+            <dt>Email</dt>
+            <dd>@ViewBag.Email</dd>
+
+
+            <dt>Phone No.</dt>
+            <dd>@ViewBag.Phone</dd>
+
+
+            <dt>Points</dt>
+            <dd>@ViewBag.Points</dd>
+
+        </dl>
+    </div>
+    <div class="col-md-4">
+        <dl class="dl-horizontal">
+            <dt>No of Albums</dt>
+            <dd>@ViewBag.NAlb</dd>
+
+            <dt>No. of Pictures</dt>
+            <dd>@ViewBag.NPic</dd>
+
+            <dt>latest album</dt>
+            <dd>@ViewBag.lastAlbum</dd>
+
+
+
+
+        </dl>
+    </div>
+    <div class="col-md-4 ">
+
+
+
+        @Html.ActionLink("Manage Albums", "ManageAlbums", new { XuName = @ViewBag.Name }, new { @class = "btn btn-success btn-xs marginTop10px" })
+        @Html.ActionLink("New Allbum", "NewAllbum", new { XuName = @ViewBag.Name }, new { @class = "btn btn-success btn-xs marginTop10px" })
+        @Ajax.ActionLink("Edit Points", "ChangePoints", new { username = @ViewBag.Name, xpoints = @ViewBag.Points }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ChangeDiv",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "btn btn-success btn-xs marginTop10px" })
+
+
+        @Ajax.ActionLink("Send Email", "newmail", new { Email = @ViewBag.Email }, new AjaxOptions()
+                                   {
+                                       HttpMethod = "GET",
+                                       UpdateTargetId = "ChangeDiv",
+                                       InsertionMode = InsertionMode.Replace,
+                                       OnBegin = "onBegin",
+                                       OnComplete = "onComplete"
+                                   }, new { @class = "btn btn-success btn-xs marginTop10px" })
+    </div>
+</div>
+
+
+
+<div id="ChangeDiv" class="marginTop10px  col-centered thumbnail">
+   
+    <h4>latest Pictures</h4>
+    <div class="grd marginTop10px"></div>
+    <div class="row  marginTop10px marginleft15px MR15">
+        @{
+    foreach (var item in ViewBag.imgs)
+    {
+        <div class="col-md-3">
+            <img src="~/thumb/@item" class=" img-responsive img-rounded  col-centered">
+        </div>
+    }
+}
+    </div>
+    <hr />
+</div>
